@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Kill the process without kill
+PID=$("bash ./4-to_infinity_and_beyond" -f)
+pkill -15 "$PID"
