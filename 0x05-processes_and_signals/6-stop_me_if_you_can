@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
-# Kilil the process without kilil
+# Kills the process
 pkill -15 "bash ./4-to_infinity_and_beyond" -f
