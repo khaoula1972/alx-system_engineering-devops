@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Search for processes with names containing "bash"
+pgrep -fl bash
