@@ -1,6 +1,5 @@
 # Let's kill a process
-exec { 'kill_killmenow_process':
+exec { 'kill-killmenow':
   command     => 'pkill killmenow',
-  refreshonly => true,
-  logoutput   => true,
+  path    => '/usr/bin';
 }
