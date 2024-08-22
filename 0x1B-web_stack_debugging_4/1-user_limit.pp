@@ -8,18 +8,18 @@ user { 'holberton':
 
 # Ensure the home directory has the correct permissions
 file { '/home/holberton':
-  ensure  => 'directory',
-  owner   => 'holberton',
-  group   => 'holberton',
-  mode    => '0755',
+  ensure => 'directory',
+  owner  => 'holberton',
+  group  => 'holberton',
+  mode   => '0755',
 }
 
 # Ensure the holberton user can open a specific file
 file { '/path/to/your/file':
-  ensure  => 'file',
-  owner   => 'holberton',
-  group   => 'holberton',
-  mode    => '0644',
+  ensure => 'file',
+  owner  => 'holberton',
+  group  => 'holberton',
+  mode   => '0644',
 }
 
 # Ensure holberton user has the right permissions to open files in a directory
