@@ -1,32 +1,13 @@
-# Create the holberton user if it does not exist
-user { 'holberton':
-  ensure     => 'present',
-  managehome => true,
-  home       => '/home/holberton',
-  shell      => '/bin/bash',
+# Enable the user holberton to login and open files without error.
+
+# Increase hard file limit for Holberton user.
+exec { 'increase-hard-file-limit-for-holberton-user':
+  command => 'sed -i "/holberton hard/s/5/50000/" /etc/security/limits.conf',
+  path    => '/usr/local/bin/:/bin/'
 }
 
-# Ensure the home directory has the correct permissions
-file { '/home/holberton':
-  ensure => 'directory',
-  owner  => 'holberton',
-  group  => 'holberton',
-  mode   => '0755',
-}
-
-# Ensure the holberton user can open a specific file
-file { '/path/to/your/file':
-  ensure => 'file',
-  owner  => 'holberton',
-  group  => 'holberton',
-  mode   => '0644',
-}
-
-# Ensure holberton user has the right permissions to open files in a directory
-file { '/path/to/your/directory':
-  ensure  => 'directory',
-  owner   => 'holberton',
-  group   => 'holberton',
-  mode    => '0755',
-  recurse => true,
+# Increase soft file limit for Holberton user.
+exec { 'increase-soft-file-limit-for-holberton-user':
+  command => 'sed -i "/holberton soft/s/4/50000/" /etc/security/limits.conf',
+  path    => '/usr/local/bin/:/bin/'
 }
