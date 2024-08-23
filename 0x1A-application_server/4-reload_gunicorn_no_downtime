@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Variables
+SERVICE_NAME="gunicorn"
+GUNICORN_PID_FILE="/run/gunicorn/gunicorn.pid"
+GUNICORN_CONFIG="/home/ubuntu/AirBnB_clone_v4/gunicorn.conf.py"
+
+# Function to reload Gunicorn gracefully
+reload_gunicorn() {
+    echo "Reloading Gunicorn gracefully..."
+
+    if [[ -f "$GUNICORN_PID_FILE" ]]; then
+        # Send HUP signal to Gunicorn to reload configuration
+        sudo kill -HUP "$(cat $GUNICORN_PID_FILE)"
+        echo "Gunicorn reloaded successfully."
+    else
+        echo "Gunicorn PID file not found. Please ensure Gunicorn is running."
+        exit 1
+    fi
+}
+
+# Execute the reload function
+reload_gunicorn
